@@ -40,7 +40,7 @@ Typing out the `bitmap` keyword should make it green and clickable. Clicking on 
 ### Levels and maps
 Now that you have the sprites, next thing you will need is a level for the sprites to move and play around in. Creating a level is very similar to creating a bitmap for a sprite.
 ```
-const level = map``;
+let level = map``;
 ```
 Like the `bitmap` keyword, the `map` is also clickable, and clicking it will open the map editor, where you can edit how you want your level to look like. You change the size the level, as well as adding sprites to the tiles.
 ![](map-editor.png)
