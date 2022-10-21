@@ -35,7 +35,7 @@ setLegend(
 );
 ```
 Typing out the `bitmap` keyword should make it green and clickable. Clicking on it will open up the sprite editor, where you will be able to draw out what you want your sprites to look like.
-![](sprite-edior.png)
+![](sprite-editor.png)
 
 ### Levels and maps
 Now that you have the sprites, next thing you will need is a level for the sprites to move and play around in. Creating a level is very similar to creating a bitmap for a sprite.
