@@ -71,3 +71,26 @@ onInput("s", () => {
 });
 ```
 Try to replicate it for the W, A, and D keys to make the player move around in all four directions.
+
+### Winning the game
+Now that you are able to push the box around the level, we need to check if the box has been pushed onto the goal, and if so restart the game. We can check for this in the `afterInput` function. This function is executed after the inputs have been processed, and it works very similarly to the `onInput` funciton. To check that the box sprite is overlapping the goal sprite, we can check if their x and y positions are the same.
+```
+afterInput(() => {
+  let boxSprite = getFirst(box);        // Gets the sprite of the box
+  let goalSprite = getFirst(goal);      // Gets the sprite of the goal
+  
+  // Check if they overlap
+  if (boxSprite.x == goalSprite.x && boxSprite.y == goalSprite.y) {
+    // You win
+    level = map``;
+    setMap(level);
+  }
+});
+```
+We reset the game by setting the level back to what we set it in the beginning, which puts all the sprites back where they started.
+
+### End, or the Beginning?
+We have now finished building a very simple game, and now it's your time to hack and expand the game any way you want. Here are some suggestions if you are unable to come up with anything.
+- Create obstacles: Make a sprite that is solid but you cannot push around, which can act as a barrier that the player will have to go around.
+- Add more levels: Instead of having just one level, make it so that once the player completes one level, they can onto a second one.
+- Make a restart button: Sometimes, you may get the box stuck in a place you can't get it out of, so you may want to make it so that the user can press a key to restart the whole game.
