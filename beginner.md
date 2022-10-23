@@ -136,9 +136,9 @@ To make the user enter the next level when the player completes one level, we wi
 if (boxSprite.x == goalSprite.x && boxSprite.y == goalSprite.y) {
 	// You win
 	level++;                                // Increment the level we are on
-	
+
 	if (level >= levels.length) level = 0;  // Go back to the first level if user finishes all levels
-	
+
 	currentLevel = levels[level];
 	setMap(currentLevel);
 }
