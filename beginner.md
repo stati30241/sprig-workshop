@@ -145,4 +145,4 @@ if (boxSprite.x == goalSprite.x && boxSprite.y == goalSprite.y) {
 ```
 
 ### End, or the Beginning?
-We have now finished building a very simple game, and now it's your time to hack and expand the game any way you want.
+We have now finished building a very simple game, and now it's your time to hack and expand the game any way you want. You can change the sprites, add more game mechanics and maybe check out the advanced version that goes over more features of Sprig.
