@@ -118,3 +118,31 @@ onInput("j", () => {
 });
 ```
 
+### Adding more levels
+One level may not just be enough, so to add more levels to the game, you can just add more maps to the levels list we created in the beginning. Make sure to edit it so that each map is different.
+```
+let level = 0;
+const levels =  [
+  map``,
+	map``,
+	map``,
+	map``,
+];
+let currentLevel = levels[level];
+```
+To make the user enter the next level when the player completes one level, we will have to modify the code we wrote when we added the win mechanic. Everytime the player completes one level, we increment the `level` variable so that they are on the next one. However the array of levels is finite and to avoid overflow, we will need to make sure that the value of `level` is not greater than the size of the `levels` array.
+```
+// Check if they overlap
+if (boxSprite.x == goalSprite.x && boxSprite.y == goalSprite.y) {
+	// You win
+	level++;                                // Increment the level we are on
+
+	if (level >= levels.length) level = 0;  // Go back to the first level if user finishes all levels
+
+	currentLevel = levels[level];
+	setMap(currentLevel);
+}
+```
+
+### End, or the Beginning?
+We have now finished building a very simple game, and now it's your time to hack and expand the game any way you want. You can change the sprites, add more game mechanics and maybe check out the advanced version that goes over more features of Sprig.
