@@ -40,13 +40,17 @@ Typing out the `bitmap` keyword should make it green and clickable. Clicking on 
 ### Levels and maps
 Now that you have the sprites, next thing you will need is a level for the sprites to move and play around in. Creating a level is very similar to creating a bitmap for a sprite.
 ```
-let level = map``;
+let level = 0;
+const levels =  [
+  map``
+];
+let currentLevel = levels[level];
 ```
 Like the `bitmap` keyword, the `map` is also clickable, and clicking it will open the map editor, where you can edit how you want your level to look like. You change the size the level, as well as adding sprites to the tiles.
 ![](map-editor.png)
 Once you are satisfied with your level, you can set that level as the one to be used.
 ```
-setMap(level);
+setMap(currentLevel);
 ```
 
 ### Pushing Solids
@@ -82,15 +86,63 @@ afterInput(() => {
   // Check if they overlap
   if (boxSprite.x == goalSprite.x && boxSprite.y == goalSprite.y) {
     // You win
-    level = map``;
-    setMap(level);
+    currentLevel = levels[level];
+    setMap(currentLevel);
   }
 });
 ```
 We reset the game by setting the level back to what we set it in the beginning, which puts all the sprites back where they started.
 
+### Adding Obstacles
+We have a simple working game now, but there is no challenge and it is very boring. To remedy that, we are going to add obstacles, solid blocks that are scattered on the map that you cannot push around and are a barrier that player must go around. To do this we can create another sprite:
+```
+const obstacle = "o";
+
+setLegend(
+  [ player, bitmap`` ],
+  [ box, bitmap`` ],
+  [ goal, bitmap`` ],
+  [ obstacle, bitmap`` ]
+);
+
+setSolids([player, box, obstacle]);
+```
+Since we don't want the obstacle to be pushed around, we will not add it the list of things that the player sprite can push around. Now you can open the map editor and scatter the obstacle block wherever you feel like, adding a bit of challenge into the game.
+
+### Restart Mechanic
+Sometimes, the box get stuck in a corner so that the player is unable to move it around. In this case, the user should have the option to restart the game. We add this mecahnic by setting the J key as the restart button, and then we use the code we did for player movement to check for key presses.
+```
+onInput("j", () => {
+  currentLevel = levels[level];
+  setMap(currentLevel);
+});
+```
+
+### Adding more levels
+One level may not just be enough, so to add more levels to the game, you can just add more maps to the levels list we created in the beginning. Make sure to edit it so that each map is different.
+```
+let level = 0;
+const levels =  [
+  map``,
+	map``,
+	map``,
+	map``,
+];
+let currentLevel = levels[level];
+```
+To make the user enter the next level when the player completes one level, we will have to modify the code we wrote when we added the win mechanic. Everytime the player completes one level, we increment the `level` variable so that they are on the next one. However the array of levels is finite and to avoid overflow, we will need to make sure that the value of `level` is not greater than the size of the `levels` array.
+```
+// Check if they overlap
+if (boxSprite.x == goalSprite.x && boxSprite.y == goalSprite.y) {
+	// You win
+	level++;                              // Increment the level we are on
+	
+	if (level >= levels.size) level = 0;  // Go back to the first level if user finishes all levels
+	
+	currentLevel = levels[level];
+	setMap(currentLevel);
+}
+```
+
 ### End, or the Beginning?
-We have now finished building a very simple game, and now it's your time to hack and expand the game any way you want. Here are some suggestions if you are unable to come up with anything.
-- Create obstacles: Make a sprite that is solid but you cannot push around, which can act as a barrier that the player will have to go around.
-- Add more levels: Instead of having just one level, make it so that once the player completes one level, they can onto a second one.
-- Make a restart button: Sometimes, you may get the box stuck in a place you can't get it out of, so you may want to make it so that the user can press a key to restart the whole game.
+We have now finished building a very simple game, and now it's your time to hack and expand the game any way you want.
