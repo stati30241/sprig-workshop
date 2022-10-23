@@ -124,9 +124,9 @@ One level may not just be enough, so to add more levels to the game, you can jus
 let level = 0;
 const levels =  [
   map``,
-	map``,
-	map``,
-	map``,
+  map``,
+  map``,
+  map``,
 ];
 let currentLevel = levels[level];
 ```
@@ -134,13 +134,13 @@ To make the user enter the next level when the player completes one level, we wi
 ```
 // Check if they overlap
 if (boxSprite.x == goalSprite.x && boxSprite.y == goalSprite.y) {
-	// You win
-	level++;                                // Increment the level we are on
+  // You win
+  level++;                                // Increment the level we are on
 
-	if (level >= levels.length) level = 0;  // Go back to the first level if user finishes all levels
+  if (level >= levels.length) level = 0;  // Go back to the first level if user finishes all levels
 
-	currentLevel = levels[level];
-	setMap(currentLevel);
+  currentLevel = levels[level];
+  setMap(currentLevel);
 }
 ```
 
