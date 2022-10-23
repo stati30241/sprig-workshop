@@ -137,7 +137,7 @@ if (boxSprite.x == goalSprite.x && boxSprite.y == goalSprite.y) {
 	// You win
 	level++;                              // Increment the level we are on
 	
-	if (level >= levels.size) level = 0;  // Go back to the first level if user finishes all levels
+	if (level >= levels.length) level = 0;  // Go back to the first level if user finishes all levels
 	
 	currentLevel = levels[level];
 	setMap(currentLevel);
