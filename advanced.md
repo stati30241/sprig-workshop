@@ -15,7 +15,7 @@ Before jumping straight into coding, it is often better to grab some paper and p
 - We also want to incorporate animations and sound effects into the game.
   
 Effectively, the end product should look something like this:
-![](space_invaders_gif.gif)
+![](space_invaders_game.gif)
 
 ## Getting the basic structure down
 To begin with, we will create some sprites for the player, enemies, lasers from the player, the lasers from the enemies. We will also create a simple map and set that as the current level. It is encouraged that you come up with your own art for the sprites and your own design for the level.
